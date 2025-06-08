@@ -29,8 +29,8 @@ async function initializeTools() {
   console.log('Available tools:', availableTools.map(t => t.definition.function.name));
 }
 
-// Initialize tools on startup
-initializeTools();
+// Initialize tools on startup (non-blocking)
+initializeTools().catch(console.error);
 
 // OpenAPI schema endpoint for ChatGPT
 app.get('/openapi.json', (req, res) => {
@@ -142,9 +142,9 @@ app.post('/search-books', async (req, res) => {
   }
 });
 
-// Root endpoint
+// Root endpoint - fast health check response
 app.get('/', (req, res) => {
-  res.status(200).json({ status: 'ok' });
+  res.status(200).send('OK');
 });
 
 // Health check endpoint
@@ -160,4 +160,7 @@ app.listen(port, '0.0.0.0', () => {
   console.log(`📋 OpenAPI spec available at: /openapi.json`);
   console.log(`🔍 Search endpoint: POST /search-books`);
   console.log(`💡 For ChatGPT Custom GPT, use: https://books-mcp-server-jme4040.replit.app/openapi.json`);
+}).on('error', (err) => {
+  console.error('Server startup error:', err);
+  process.exit(1);
 }); 
