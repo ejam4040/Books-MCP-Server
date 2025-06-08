@@ -159,7 +159,7 @@ const server = app.listen(port, '0.0.0.0', () => {
   console.log(`🌐 Server listening on 0.0.0.0:${port}`);
   console.log(`📋 OpenAPI spec available at: /openapi.json`);
   console.log(`🔍 Search endpoint: POST /search-books`);
-  console.log(`💡 For ChatGPT Custom GPT, use: https://books-mcp-server-jme4040.replit.app/openapi.json`);
+  console.log(`💡 For ChatGPT Custom GPT, use: https://books-mcp-server-1-jme4040.replit.app/openapi.json`);
   console.log(`Available tools: [`, availableTools.map(t => `'${t.name}'`).join(', '), `]`);
 });
 
