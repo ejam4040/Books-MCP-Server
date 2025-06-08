@@ -142,6 +142,23 @@ app.post('/search-books', async (req, res) => {
   }
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    name: 'Google Books MCP Bridge',
+    description: 'MCP server for searching Google Books API',
+    status: 'running',
+    endpoints: {
+      openapi: '/openapi.json',
+      search: '/search-books',
+      health: '/health'
+    },
+    usage: {
+      chatgpt_schema: `${req.protocol}://${req.get('host')}/openapi.json`
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'healthy', tools: availableTools.length });
@@ -154,5 +171,5 @@ app.listen(port, '0.0.0.0', () => {
   console.log(`🌐 Server listening on 0.0.0.0:${port}`);
   console.log(`📋 OpenAPI spec available at: /openapi.json`);
   console.log(`🔍 Search endpoint: POST /search-books`);
-  console.log(`💡 For ChatGPT Custom GPT, use: https://your-render-domain.onrender.com/openapi.json`);
+  console.log(`💡 For ChatGPT Custom GPT, use: https://books-mcp-server-jme4040.replit.app/openapi.json`);
 }); 
