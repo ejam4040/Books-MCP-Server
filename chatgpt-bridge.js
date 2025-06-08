@@ -148,9 +148,11 @@ app.get('/health', (req, res) => {
 });
 
 const port = process.env.PORT || 3002;
+console.log(`Starting server on port ${port}...`);
 app.listen(port, '0.0.0.0', () => {
   console.log(`📚 Google Books MCP Bridge running on port ${port}`);
+  console.log(`🌐 Server listening on 0.0.0.0:${port}`);
   console.log(`📋 OpenAPI spec available at: /openapi.json`);
   console.log(`🔍 Search endpoint: POST /search-books`);
-  console.log(`💡 For ChatGPT Custom GPT, use: https://your-railway-domain.railway.app/openapi.json`);
+  console.log(`💡 For ChatGPT Custom GPT, use: https://your-render-domain.onrender.com/openapi.json`);
 }); 
