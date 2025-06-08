@@ -144,19 +144,7 @@ app.post('/search-books', async (req, res) => {
 
 // Root endpoint
 app.get('/', (req, res) => {
-  res.json({
-    name: 'Google Books MCP Bridge',
-    description: 'MCP server for searching Google Books API',
-    status: 'running',
-    endpoints: {
-      openapi: '/openapi.json',
-      search: '/search-books',
-      health: '/health'
-    },
-    usage: {
-      chatgpt_schema: `${req.protocol}://${req.get('host')}/openapi.json`
-    }
-  });
+  res.status(200).json({ status: 'ok' });
 });
 
 // Health check endpoint
@@ -164,7 +152,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'healthy', tools: availableTools.length });
 });
 
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3000;
 console.log(`Starting server on port ${port}...`);
 app.listen(port, '0.0.0.0', () => {
   console.log(`📚 Google Books MCP Bridge running on port ${port}`);
