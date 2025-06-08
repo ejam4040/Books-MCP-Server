@@ -1,0 +1,34 @@
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "npm start"]
+
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[[ports]]
+localPort = 3003
+externalPort = 3003
+
+[languages]
+
+[languages.javascript]
+pattern = "**/{*.js,*.jsx,*.ts,*.tsx,*.mjs,*.cjs}"
+
+[languages.javascript.languageServer]
+start = "typescript-language-server --stdio"
+
+[workflows]
+runButton = "Start MCP Server"
+
+[[workflows.workflow]]
+name = "Start MCP Server"
+author = 36213781
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm start"
