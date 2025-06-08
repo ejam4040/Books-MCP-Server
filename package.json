@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node chatgpt-bridge.js",
     "list-tools": "node index.js tools",
     "chatgpt-bridge": "node chatgpt-bridge.js",
     "openai-example": "node openai-integration-example.js",
