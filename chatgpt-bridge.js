@@ -152,7 +152,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'healthy', tools: availableTools.length });
 });
 
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3000;
 console.log(`Starting server on port ${port}...`);
 const server = app.listen(port, '0.0.0.0', () => {
   console.log(`📚 Google Books MCP Bridge running on port ${port}`);
