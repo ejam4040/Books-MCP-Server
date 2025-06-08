@@ -148,9 +148,9 @@ app.get('/health', (req, res) => {
 });
 
 const port = process.env.PORT || 3002;
-app.listen(port, () => {
-  console.log(`📚 Google Books MCP Bridge running on http://localhost:${port}`);
-  console.log(`📋 OpenAPI spec available at: http://localhost:${port}/openapi.json`);
-  console.log(`🔍 Search endpoint: POST http://localhost:${port}/search-books`);
-  console.log(`💡 For ChatGPT Custom GPT, use: http://localhost:${port}/openapi.json`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`📚 Google Books MCP Bridge running on port ${port}`);
+  console.log(`📋 OpenAPI spec available at: /openapi.json`);
+  console.log(`🔍 Search endpoint: POST /search-books`);
+  console.log(`💡 For ChatGPT Custom GPT, use: https://your-railway-domain.railway.app/openapi.json`);
 }); 
