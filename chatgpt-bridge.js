@@ -152,15 +152,18 @@ app.get('/health', (req, res) => {
   res.json({ status: 'healthy', tools: availableTools.length });
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 console.log(`Starting server on port ${port}...`);
-app.listen(port, '0.0.0.0', () => {
+const server = app.listen(port, '0.0.0.0', () => {
   console.log(`📚 Google Books MCP Bridge running on port ${port}`);
   console.log(`🌐 Server listening on 0.0.0.0:${port}`);
   console.log(`📋 OpenAPI spec available at: /openapi.json`);
   console.log(`🔍 Search endpoint: POST /search-books`);
   console.log(`💡 For ChatGPT Custom GPT, use: https://books-mcp-server-jme4040.replit.app/openapi.json`);
-}).on('error', (err) => {
+  console.log(`Available tools: [`, availableTools.map(t => `'${t.name}'`).join(', '), `]`);
+});
+
+server.on('error', (err) => {
   console.error('Server startup error:', err);
   process.exit(1);
 }); 
